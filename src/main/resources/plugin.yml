@@ -1,0 +1,4 @@
+name: It
+version: '${project.version}'
+main: me.phil.sieben.it.Sieben.It
+api-version: 1.18
