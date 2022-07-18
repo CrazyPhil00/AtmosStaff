@@ -1,4 +1,7 @@
-name: It
+name: AtmosStaff
 version: '${project.version}'
 main: me.phil.sieben.it.Sieben.It
 api-version: 1.18
+
+commands:
+    staff:
