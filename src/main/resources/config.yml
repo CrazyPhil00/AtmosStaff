@@ -1,3 +1,20 @@
 
 
 prefix: "&7[&1&lAtmos&9&lStaff&7]&r "
+
+
+
+ban:
+    screen:
+          line_1: '&cYou are banned from this Server'
+          line_2: 'Reason: &8%reason%'
+          line_3: 'You are banned until: &9%duration%'
+          line_4: ''
+
+
+    reason:
+          ban_id_99:
+                    name: PERMANENT
+                    reason: Extreme
+                    duration: null #null = permanent
+                    time_unit: D

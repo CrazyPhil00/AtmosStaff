@@ -68,7 +68,7 @@ public class ProfileListener implements Listener {
                         TextComponent override, add;
                         override = new TextComponent();
                         override.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "ovr"));
-                        override.setText("§7[§6§oovr§7]");
+                        override.setText(" §7[§6§oovr§7]");
 
                         add = new TextComponent();
                         add.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "add"));
@@ -76,7 +76,7 @@ public class ProfileListener implements Listener {
 
                         chatLock.put(player, new String[]{clickedPlayer.getName(), "ASK_FOR_NOTE_OVERRIDE"});
                         player.sendMessage(StaffPrefix + "§4Player has already notes.\n" +
-                                "Do you want to override or add your note to the already existed note. ");
+                                "Do you want to override or add your note to the already existed notes? ");
                         player.spigot().sendMessage(add, override);
                     }
                     else {
@@ -119,6 +119,7 @@ public class ProfileListener implements Listener {
 
             }else if (action.equalsIgnoreCase("NOTE")) {
                 String note = event.getMessage();
+                note = "§6by " + player.getName() + ": §r" + note;
                 noteCfg.set(playerToAction.getUniqueId().toString(), note);
                 noteCfg.save(noteFile);
                 chatLock.remove(player);
@@ -134,16 +135,27 @@ public class ProfileListener implements Listener {
                 }else if (answer.equalsIgnoreCase("add")) {
                     chatLock.remove(player);
                     chatLock.put(player, new String[]{playerToAction.getName(), "NOTE_ADD"});
+                    player.sendMessage(StaffPrefix + "§6Write note in chat.");
 
                 }else {
-                    player.sendMessage(StaffPrefix + "§oWhat? §cDo you want to override or add your note to the already existed note. §7[§6§oovr§7] [§6§oadd§r§7]");
+                    player.sendMessage(StaffPrefix + "§oWhat? §cDo you want to override or add your note to the already existed note.");
+                    TextComponent override, add;
+                    override = new TextComponent();
+                    override.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "ovr"));
+                    override.setText(" §7[§6§oovr§7]");
+
+                    add = new TextComponent();
+                    add.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "add"));
+                    add.setText("§7[§6§oadd§r§7]");
+                    player.spigot().sendMessage(add, override);
+
                     chatLock.put(player, new String[]{playerToAction.getName(), "ASK_FOR_NOTE_OVERRIDE"});
                 }
             }else if (action.equalsIgnoreCase("NOTE_ADD")) {
                 String oldNote = noteCfg.getString(playerToAction.getUniqueId().toString());
                 String newNote = event.getMessage();
 
-                String combinedNote = oldNote + " <|> " + newNote;
+                String combinedNote = oldNote + " §r§7<|> §6by " + player.getName() + ": §r" + newNote;
                 noteCfg.set(playerToAction.getUniqueId().toString(), combinedNote);
                 noteCfg.save(noteFile);
                 player.sendMessage(StaffPrefix + "§6Updated Note");
