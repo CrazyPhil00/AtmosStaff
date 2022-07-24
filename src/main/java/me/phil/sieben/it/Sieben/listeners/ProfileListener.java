@@ -1,8 +1,7 @@
 package me.phil.sieben.it.Sieben.listeners;
 
-import me.phil.sieben.it.Sieben.inventorys.PlayerProfile;
+import me.phil.sieben.it.Sieben.ban.inventorys.PlayerProfile;
 
-import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;

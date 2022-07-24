@@ -1,4 +1,4 @@
-package me.phil.sieben.it.Sieben.inventorys;
+package me.phil.sieben.it.Sieben.ban.inventorys;
 
 import me.phil.sieben.it.Sieben.utils.ItemBuilder;
 import org.bukkit.Bukkit;

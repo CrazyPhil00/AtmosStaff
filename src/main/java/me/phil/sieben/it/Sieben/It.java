@@ -1,10 +1,12 @@
 package me.phil.sieben.it.Sieben;
 
-import me.phil.sieben.it.Sieben.commands.ban.BanCommand;
-import me.phil.sieben.it.Sieben.commands.ban.ChatClearCommand;
-import me.phil.sieben.it.Sieben.commands.StaffCommand;
-import me.phil.sieben.it.Sieben.commands.ban.CreateBan;
+import me.phil.sieben.it.Sieben.ban.inventorys.commands.BanCommand;
+import me.phil.sieben.it.Sieben.ban.inventorys.commands.ChatClearCommand;
+import me.phil.sieben.it.Sieben.ban.inventorys.commands.StaffCommand;
+import me.phil.sieben.it.Sieben.ban.inventorys.commands.CreateBanCommand;
+import me.phil.sieben.it.Sieben.ban.inventorys.commands.MuteCommand;
 import me.phil.sieben.it.Sieben.listeners.BanListener;
+import me.phil.sieben.it.Sieben.listeners.MuteListener;
 import me.phil.sieben.it.Sieben.listeners.ProfileListener;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -52,11 +54,14 @@ public final class It extends JavaPlugin {
         Objects.requireNonNull(getCommand("ban")).setTabCompleter(new BanCommand());
         Objects.requireNonNull(getCommand("ban")).setExecutor(new BanCommand());
         Objects.requireNonNull(getCommand("clearchat")).setExecutor(new ChatClearCommand());
-        Objects.requireNonNull(getCommand("createban")).setExecutor(new CreateBan());
+        Objects.requireNonNull(getCommand("createban")).setExecutor(new CreateBanCommand());
+        Objects.requireNonNull(getCommand("mute")).setExecutor(new MuteCommand());
 
         Bukkit.getPluginManager().registerEvents(new BanListener(), this);
 
         Bukkit.getPluginManager().registerEvents(new ProfileListener(), this);
+
+        Bukkit.getPluginManager().registerEvents(new MuteListener(), this);
     }
 
     @Override
