@@ -1,4 +1,4 @@
-package me.phil.sieben.it.Sieben.listeners;
+package me.phil.sieben.it.Sieben.ban.listeners;
 
 import me.phil.sieben.it.Sieben.ban.inventorys.PlayerProfile;
 

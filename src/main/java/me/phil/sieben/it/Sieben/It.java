@@ -1,13 +1,10 @@
 package me.phil.sieben.it.Sieben;
 
-import me.phil.sieben.it.Sieben.ban.inventorys.commands.BanCommand;
-import me.phil.sieben.it.Sieben.ban.inventorys.commands.ChatClearCommand;
-import me.phil.sieben.it.Sieben.ban.inventorys.commands.StaffCommand;
-import me.phil.sieben.it.Sieben.ban.inventorys.commands.CreateBanCommand;
-import me.phil.sieben.it.Sieben.ban.inventorys.commands.MuteCommand;
-import me.phil.sieben.it.Sieben.listeners.BanListener;
-import me.phil.sieben.it.Sieben.listeners.MuteListener;
-import me.phil.sieben.it.Sieben.listeners.ProfileListener;
+import me.phil.sieben.it.Sieben.ban.commands.*;
+import me.phil.sieben.it.Sieben.ban.listeners.BanListener;
+import me.phil.sieben.it.Sieben.ban.listeners.MuteListener;
+import me.phil.sieben.it.Sieben.ban.listeners.ProfileListener;
+import me.phil.sieben.it.Sieben.database.MySQL;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -15,7 +12,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
+import java.util.UUID;
 
 public final class It extends JavaPlugin {
 
@@ -29,6 +28,14 @@ public final class It extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
+
+        try {
+            MySQL mySQL = new MySQL("localhost", "root", "", "AtmosStaff", 3306);
+            mySQL.openConnection();
+            mySQL.createReport(UUID.randomUUID(), UUID.randomUUID(), "Hacker");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         instance = this;
 

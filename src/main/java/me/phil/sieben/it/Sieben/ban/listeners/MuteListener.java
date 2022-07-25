@@ -1,4 +1,4 @@
-package me.phil.sieben.it.Sieben.listeners;
+package me.phil.sieben.it.Sieben.ban.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,7 +8,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import java.util.Date;
 
 import static me.phil.sieben.it.Sieben.It.StaffPrefix;
-import static me.phil.sieben.it.Sieben.ban.inventorys.commands.MuteCommand.mutedPlayer;
+import static me.phil.sieben.it.Sieben.ban.commands.MuteCommand.mutedPlayer;
 
 public class MuteListener implements Listener {
     @EventHandler
